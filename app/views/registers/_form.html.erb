@@ -1,25 +1,53 @@
-<%= form_with model:@register,local:true do |form|%>
-    <div class="field">
-        <%= form.label :fistName %>
-        <%= form.text_field :fistName %>
+<div class="form-container">
+  <h1>Register Form</h1>
+
+  <%= form_with model: @user, local: true do |form| %>
+    <div class="form-row">
+      <div class="form-group">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: 'form-input' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: 'form-input' %>
+      </div>
     </div>
-    <div class="field">
-        <%= form.label :lastName %>
-        <%= form.text_field :lastName %>
-    </div>
-    <div class="field">
-        <%= form.label :email %>
-        <%= form.email_field :email %>
-    </div>
-    <div class="field">
-        <%= form.label :birthDay %>
-        <%= form.password_field :birthDay %>
-    </div>
-    <div class="field">
+
+    <div class="form-row">
+      <div class="form-group">
+        <%= form.label :birthday %>
+        <%= form.date_field :birthday, class: 'form-input' %>
+      </div>
+
+      <div class="form-group">
         <%= form.label :gender %>
-        <%= form.password_field :gender %>
+        <%= form.radio_button :gender, 'Male', class: 'form-radio' %>
+        <%= form.label :gender, 'Male' %>
+        <%= form.radio_button :gender, 'Female', class: 'form-radio' %>
+        <%= form.label :gender, 'Female' %>
+      </div>
     </div>
-    <div class="actions">
-        <%= form.submit %>
+
+    <div class="form-row">
+      <div class="form-group">
+        <%= form.label :email %>
+        <%= form.email_field :email, class: 'form-input' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :phone_number %>
+        <%= form.telephone_field :phone_number, class: 'form-input' %>
+      </div>
     </div>
-    <%end%>
+
+    <div class="form-group">
+      <%= form.label :subject %>
+      <%= form.select :subject, ['Option 1', 'Option 2', 'Option 3'], prompt: 'Choose option', class: 'form-input' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'Submit', class: 'submit-btn' %>
+    </div>
+  <% end %>
+</div>
