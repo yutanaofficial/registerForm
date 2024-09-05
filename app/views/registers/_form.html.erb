@@ -1,0 +1,25 @@
+<%= form_with model:@register,local:true do |form|%>
+    <div class="field">
+        <%= form.label :fistName %>
+        <%= form.text_field :fistName %>
+    </div>
+    <div class="field">
+        <%= form.label :lastName %>
+        <%= form.text_field :lastName %>
+    </div>
+    <div class="field">
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+    </div>
+    <div class="field">
+        <%= form.label :birthDay %>
+        <%= form.password_field :birthDay %>
+    </div>
+    <div class="field">
+        <%= form.label :gender %>
+        <%= form.password_field :gender %>
+    </div>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+    <%end%>
