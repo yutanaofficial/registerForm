@@ -1,12 +1,34 @@
-<% @register.each do |user|%>
-    <tr>
-        <td><%= user.fistName %></td>
-        <td><%= user.lastName %></td>
-        <td><%= user.email %></td>
-        <td><%= user.birthDay %></td>
-        <td><%= user.gender %></td>
-        <td><%= user.phoneNumber %></td>
-    </tr>
-<%= link_to 'Back', new_register_path, class: 'btn btn-primary' %>
+<!-- app/views/registers/index.html.erb -->
 
- <%end%>
+<h1>All Registrations</h1>
+<table>
+  <thead>
+    <tr>
+      <th>fistName</th>
+      <th>lastName</th>
+      <th>birthDay</th>
+      <th>gender</th>
+      <th>email</th>
+      <th>phoneNumber</th>
+      <th>subJect</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @registers.each do |register| %>
+      <tr>
+        <td><%= register.fistName %></td>
+        <td><%= register.lastName %></td>
+        <td><%= register.birthDay %></td>
+        <td><%= register.gender %></td>
+        <td><%= register.email %></td>
+        <td><%= register.phoneNumber %></td>
+        <td><%= register.subJect %></td>
+        <td>
+          <%= link_to 'Edit', edit_register_path(register) %> |
+          <%= link_to 'Delete', register_path(register), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

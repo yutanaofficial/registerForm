@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #8E44AD, #ECF0F1);
+    background: linear-gradient(to bottom, #4dd682, #b1e9d2);
     font-family: Arial, sans-serif;
   }
   
@@ -26,19 +26,24 @@ body {
   
   .form-group {
     display: flex;
-    flex-direction: column;
-    flex: 1;
-    margin-right: 1rem;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
   }
   
-  .form-group:last-child {
-    margin-right: 0;
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
   }
-  
+
+.form-group:last-child {
+  margin-right: 6;
+}
   .form-label {
-    margin-bottom: 0.5rem;
-    color: #666;
+    color: #583434;
     font-weight: bold;
+    margin-right: 1rem;
   }
   
   .form-input {
@@ -48,12 +53,12 @@ body {
   }
   
   .form-radio {
-    margin-right: 5px;
+    margin-right: 10px;
   }
   
   .submit-btn {
     padding: 0.75rem;
-    background-color: #3498DB;
+    background-color: #76e28d;
     border: none;
     color: white;
     border-radius: 5px;
