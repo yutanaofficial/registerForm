@@ -25,8 +25,10 @@
         <td><%= register.phoneNumber %></td>
         <td><%= register.subJect %></td>
         <td>
-          <%= link_to 'Edit', edit_register_path(register) %> |
-          <%= link_to 'Delete', register_path(register), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= form_with model: register, method: :delete, local: true do %>
+          <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+         <% end %>
+
         </td>
       </tr>
     <% end %>
