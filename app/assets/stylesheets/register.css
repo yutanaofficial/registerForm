@@ -1,53 +1,59 @@
+/* app/assets/stylesheets/registers.css */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-  }
-  
-  h1 {
+    background: linear-gradient(to bottom, #a8e063, #56ab2f);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .table {
+    color: #fff;
+    margin-top: 20px;
+    font-size: 36px;
+}
+
+table {
     width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  
-  .table thead {
-    background-color: #3498db;
-    color: white;
-  }
-  
-  .table th, .table td {
-    padding: 15px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .btn {
-    display: block;
-    width: 200px;
     margin: 20px auto;
-    text-align: center;
-    padding: 10px 20px;
-    background-color: #3498db;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
     color: white;
+    font-size: 18px;
+}
+
+td {
+    background-color: #fff;
+    font-size: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #d1f0d1;
+}
+
+a {
+    color: #4CAF50;
     text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .btn:hover {
-    background-color: #2980b9;
-  }
-  
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.actions {
+    text-align: center;
+}

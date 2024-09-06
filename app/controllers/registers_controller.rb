@@ -5,6 +5,7 @@ class RegistersController < ApplicationController
     @registers = Register.all
   end
 
+
   def new
     @register = Register.new
   end
@@ -21,6 +22,7 @@ class RegistersController < ApplicationController
   def edit
     # Uses the @register from before_action :set_register
   end
+
 
   def update
     if @register.update(register_params)
