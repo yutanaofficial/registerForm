@@ -6,38 +6,38 @@
     <div class="form-row">
       <div class="form-group">
         <%= form.label :fistName %>
-        <%= form.text_field :fistName, class: 'form-input' %>
+        <%= form.text_field :fistName, class: 'form-input', require: true %>
       </div>
 
       <div class="form-group">
         <%= form.label :lastName %>
-        <%= form.text_field :lastName, class: 'form-input' %>
+        <%= form.text_field :lastName, class: 'form-input',require: true %>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
         <%= form.label :birthDay %>
-        <%= form.date_field :birthDay, class: 'form-input' %>
+        <%= form.date_field :birthDay, class: 'form-input' ,require: true %>
       </div>
 
       <div class="form-group">
         <%= form.label :gender, 'Male', class: 'form-label' %>
-        <%= form.radio_button :gender, 'Male', class: 'form-radio' %>
+        <%= form.radio_button :gender, 'Male', class: 'form-radio',require: true  %>
         <%= form.label :gender, 'Female', class: 'form-label' %>
-        <%= form.radio_button :gender, 'Female', class: 'form-radio' %>
+        <%= form.radio_button :gender, 'Female', class: 'form-radio' ,require: true %>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
         <%= form.label :email %>
-        <%= form.email_field :email, class: 'form-input' %>
+        <%= form.email_field :email, class: 'form-input',require: true  %>
       </div>
 
       <div class="form-group">
         <%= form.label :phoneNumber %>
-        <%= form.telephone_field :phoneNumber, class: 'form-input' %>
+        <%= form.telephone_field :phoneNumber, class: 'form-input',require: true  %>
       </div>
     </div>
 

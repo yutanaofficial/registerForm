@@ -23,7 +23,6 @@ class RegistersController < ApplicationController
     # Uses the @register from before_action :set_register
   end
 
-
   def update
     if @register.update(register_params)
       redirect_to registers_path, notice: "Record updated successfully!"
@@ -46,4 +45,10 @@ class RegistersController < ApplicationController
   def register_params
     params.require(:register).permit(:fistName, :lastName, :birthDay, :gender, :email, :phoneNumber, :subJect)
   end
+  # def export_csv
+  #   @registers = Register.all
+  #   respond_to do |format|
+  #     format.csv { send_data @registers.to_csv, filename: "registers-#{Date.today}.csv" }
+  #   end
+  # end
 end

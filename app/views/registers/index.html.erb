@@ -27,10 +27,13 @@
         <td>
           <%= form_with model: register, method: :delete, local: true do %>
           <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_register_path(register), class: 'btn btn-primary', data: { confirm: 'Are you sure you want to edit this?' } %>
+        </td>
          <% end %>
-
+          
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+

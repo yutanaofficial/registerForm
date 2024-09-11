@@ -1,6 +1,8 @@
 body {
     background: linear-gradient(to bottom, #4dd682, #b1e9d2);
     font-family: Arial, sans-serif;
+    height: 100vh; /* add this */
+    margin: 0
   }
   
   .form-container {
@@ -13,6 +15,7 @@ body {
     text-align: center;
   }
   
+
   h1 {
     margin-bottom: 1rem;
     color: #333;
@@ -23,7 +26,7 @@ body {
     justify-content: space-between;
     margin-bottom: 1rem;
   }
-  
+
   .form-group {
     display: flex;
     flex-direction: row;

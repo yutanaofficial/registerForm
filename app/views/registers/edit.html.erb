@@ -1,0 +1,52 @@
+<%= form_with(model: @register, local: true) do |form| %>
+  <% if @register.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@register.errors.count, "error") %> prohibited this registration from being saved:</h2>
+      <ul>
+        <% @register.errors.full_messages.each do |message| %>
+          <%= stylesheet_link_tag 'register', media: 'all' %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :firstName %>
+    <%= form.text_field :firstName, class: 'form-input', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lastName %>
+    <%= form.text_field :lastName, class: 'form-input', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthDay %>
+    <%= form.date_select :birthDay, class: 'form-input' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.select :gender, ['Male', 'Female', 'Other'], class: 'form-input' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: 'form-input' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phoneNumber %>
+    <%= form.telephone_field :phoneNumber, class: 'form-input' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subJect %>
+    <%= form.text_field :subJect, class: 'form-input' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save changes' %>
+  </div>
+<% end %>
