@@ -1,8 +1,8 @@
 # syntax = docker/dockerfile:1
 
 # This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
-# docker build -t my-app .
-# docker run -d -p 80:80 -p 443:443 --name my-app -e RAILS_MASTER_KEY=<value from config/master.key> my-app
+# docker build -t registerform .
+# docker run -d -p 3000:3000 --name registerform -e RAILS_MASTER_KEY=4c2e6bdb90849b8246060f5849dbeb5a -e SECRET_KEY_BASE=<your_secret_key_base> registerform
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
 ARG RUBY_VERSION=3.3.1
@@ -20,8 +20,8 @@ RUN apt-get update -qq && \
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
-
+    BUNDLE_WITHOUT="development" \
+    SECRET_KEY_BASE="e1fb56c38b6a09b90dd79ec7da1bb086989a68a07996f8f460bb99aefe2427185f03ff32d823545c8919860ee99fceea3603e1dd2d82cc731869ae42b49b335d"
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
@@ -39,31 +39,20 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
+# Precompile assets
+RUN bundle exec rake assets:precompile
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# Final stage
+FROM base AS final
 
+# Copy built gems from build stage
+COPY --from=build /usr/local/bundle /usr/local/bundle
 
-
-
-# Final stage for app image
-FROM base
-
-# Copy built artifacts: gems, application
-COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
+# Copy application code from build stage
 COPY --from=build /rails /rails
 
-# Run and own only the runtime files as a non-root user for security
-RUN groupadd --system --gid 1000 rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
-USER 1000:1000
-
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start the server by default, this can be overwritten at runtime
+# Expose port 3000 to the Docker host, so we can access it from the outside.
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+
+# Start the main process.
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
