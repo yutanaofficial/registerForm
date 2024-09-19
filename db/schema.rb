@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2024_09_05_101053) do
-  create_table "register", force: :cascade do |t|
+  create_table "registers", force: :cascade do |t|
     t.string "fistName"
     t.string "lastName"
     t.date "birthDay"
@@ -19,18 +19,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_05_101053) do
     t.string "email"
     t.string "phoneNumber"
     t.string "subJect"
-    t.timestamps
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  # create_table "users", force: :cascade do |t|
-  #   t.string "first_name"
-  #   t.string "last_name"
-  #   t.date "birthday"
-  #   t.string "gender"
-  #   t.string "email"
-  #   t.string "phone"
-  #   t.string "subject"
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
-  # end
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birthday"
+    t.string "gender"
+    t.string "email"
+    t.string "phone"
+    t.string "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end
